@@ -1,0 +1,21 @@
+:root {
+  --background: #e5e5e5;
+  --yeloow: #f0c24a;
+  --green: #4cc76e;
+  --red: #e63946;
+  --blue-secundary: #a8dadc;
+  --blue-primary: #457b9d;
+  --blue-dark: #1d3557;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+  outline: none;
+  text-decoration: none;
+}
+
+html {
+  font-size: 0.675rem;
+}
