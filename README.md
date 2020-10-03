@@ -1,5 +1,7 @@
 # Task Manager
 
+![Resultado Final](images/result.png)
+
 Projeto Feito para aplicação de conhecimento sobre PHP vanilha.
 
 O layout produzido foi feito por mim mesmo Marlon Symczecym, e a parte da programação também.
@@ -32,7 +34,7 @@ No projeto foi utilizado:
 
 # RESULTADO
 
-![Resultado Final](images/result.png)
+![Resultado Final](images/result-git.gif)
 
 ## AUTOR
 
