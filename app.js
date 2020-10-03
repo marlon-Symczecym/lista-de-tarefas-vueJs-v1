@@ -5,6 +5,8 @@ const vm = new Vue({
     tasksConclude: [],
     describe: "",
     option: "",
+    active: false,
+    modalStyle: {},
   },
   watch: {
     tasks() {
@@ -18,6 +20,7 @@ const vm = new Vue({
     addTask() {
       if (this.describe && this.option) {
         this.tasks.push({
+          id: Math.random() + this.describe,
           task: this.describe,
           option: this.option,
           conclude: false,
@@ -34,20 +37,31 @@ const vm = new Vue({
     },
     conclude(index) {
       this.tasksConclude.push({
+        id: this.tasks[index].id,
         task: this.tasks[index].task,
         option: "conclude",
         conclude: true,
       });
       this.tasks.splice(index, 1);
     },
-    deleteTask(index) {
-      this.tasksConclude.splice(index, 1);
+    deleteTask(index, to) {
+      if (to === "tasks") {
+        this.tasks.splice(index, 1);
+      } else if (to === "conclude") {
+        this.tasksConclude.splice(index, 1);
+      }
+    },
+    modal({ target, pageX, pageY }) {
+      console.log(target.id);
+      this.active = !this.active;
+      this.modalStyle = {
+        position: "absolute",
+        left: pageX - 200 + "px",
+        top: pageY - 50 + "px",
+      };
     },
   },
   created() {
     this.loadingLocalStorage();
-    console.log(this.tasks);
   },
 });
-
-// TODO Implementar as actions do button de options de cada task

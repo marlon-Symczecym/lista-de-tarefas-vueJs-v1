@@ -70,6 +70,8 @@ select {
   height: 5rem;
   text-align: center;
   color: var(--blue-dark);
+  padding-left: 2rem;
+  font-size: 1.5rem;
 }
 
 /* BOX */
@@ -132,8 +134,9 @@ select {
   justify-content: space-between;
   align-items: center;
 }
+
 .box_btn {
-  width: 12rem;
+  width: 8rem;
   height: 5rem;
   border: none;
   border-radius: 0.5rem;
@@ -151,9 +154,23 @@ select {
   background: var(--red);
 }
 
+.modal_edit {
+  background: var(--yeloow);
+}
+
+.modal_delete {
+  background: var(--red);
+}
+
 .box_options {
   width: 4rem;
   cursor: pointer;
+  border: none;
+}
+
+.box_buttons button.box_options_btn {
+  border: none;
+  background: transparent;
 }
 
 .box_nothing {
