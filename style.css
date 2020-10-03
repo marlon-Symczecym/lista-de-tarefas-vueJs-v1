@@ -23,10 +23,13 @@ html {
 }
 
 #app {
-  max-width: 1210px;
+  width: 90%;
+  max-width: 90rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .app_title {
@@ -38,7 +41,7 @@ html {
 
 /* INPUTS */
 .inputs_container {
-  width: 114rem;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,7 +51,7 @@ html {
 .input_add {
   border: 2px solid var(--blue-primary);
   border-radius: 0.3rem;
-  width: 50rem;
+  width: 40rem;
   height: 4.6rem;
   padding-left: 2rem;
   background: var(--background);
@@ -65,7 +68,7 @@ html {
   cursor: pointer;
 }
 
-select {
+.inputs_container select {
   width: 30rem;
   height: 5rem;
   text-align: center;
@@ -86,7 +89,6 @@ select {
 }
 
 .box {
-  width: 100%;
   height: 8rem;
   background: var(--blue-secundary);
   padding: 0 2rem 0 0;
@@ -178,4 +180,37 @@ select {
   font-size: 2rem;
   color: var(--blue-primary);
   text-align: center;
+}
+
+/* RESPONSIVO */
+
+@media screen and (max-width: 1200px) {
+  .inputs_container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input_add {
+    width: 50rem;
+    margin-bottom: 1rem;
+  }
+
+  .input_options {
+    display: block;
+  }
+
+  .input_options select {
+    width: 62rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .input_add {
+    width: 30rem;
+  }
+
+  .input_options select {
+    width: 42rem;
+  }
 }
