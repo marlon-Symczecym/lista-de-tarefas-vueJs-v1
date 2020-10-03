@@ -33,34 +33,46 @@
 
     <!--- TO DO --->
     <section class="box_container">
-      <div v-if="tasks.length > 0">
-        <h2 class="tasks_title">À Fazer</h2>
-        <div v-for="(item, index) in tasks" :key="item.id" class="box">
-          <div class="box_tarja" :class="[item.option]"></div>
-          <p class="box_describe">{{item.task}}</p>
+      <div>
+        <h2 v-show="tasks.length > 0" class="tasks_title">À Fazer</h2>
 
-          <div class="box_buttons">
-            <button @click="conclude(index)" class="box_btn btn_conclude">Concluir</button>
-            <button class="box_btn modal_edit">Editar</button>
-            <button @click="deleteTask(index, 'tasks')" class="box_btn modal_delete">Deletar</button>
+        <!--- EXIBITION --->
+        <div v-for="(item, index) in tasks" v-if="tasks.length > 0" :key="item.id" class="box">
+          <div class="box_tarja" :class="[item.option]"></div>
+          <p v-if="itemEditable !== index" class="box_describe">{{item.task}}</p>
+
+          <!--- EDITABLE TASK --->
+          <div v-if="itemEditable === index" class="box_edit_container">
+            <input class="box_edit" type="text" v-model="item.task" />
+            <button @click="save(index, item.task)" class="box_btn btn_conclude">Salvar</button>
+            <button @click="cancel" class="box_btn btn_cancel">Cancelar</button>
             </button>
           </div>
-        </div>
-      </div>
 
-      <!--- CONCLUDE --->
-      <div v-if="tasksConclude.length > 0">
-        <h2 class="tasks_title">Concluídas</h2>
-        <div v-for="(item, index) in tasksConclude" :key="item.id" class="box">
-          <div class="box_tarja" :class="[item.option]"></div>
-          <p class="box_describe">{{item.task}}</p>
-          <div class="box_buttons">
-            <button @click="deleteTask(index, 'conclude')" class="box_btn btn_delete">Deletar</button>
+          <div v-if="itemEditable !== index" class="box_buttons">
+            <button @click="conclude(index)" class="box_btn btn_conclude">Concluir</button>
+            <button @click="edit(index)" class="box_btn btn_edit">Editar</button>
+            <button @click="deleteTask(index, 'tasks')" class="box_btn btn_delete">Deletar</button>
+            </button>
+          </div>
+
+        </div>
+
+        <!--- CONCLUDE --->
+        <div v-if="tasksConclude.length > 0">
+          <h2 class="tasks_title">Concluídas</h2>
+          <div v-for="(item, index) in tasksConclude" :key="item.id" class="box">
+            <div class="box_tarja" :class="[item.option]"></div>
+            <p class="box_describe">{{item.task}}</p>
+            <div class="box_buttons">
+              <button @click="deleteTask(index, 'conclude')" class="box_btn btn_delete">Deletar</button>
+            </div>
           </div>
         </div>
+
       </div>
 
-      <p v-if="tasks.length === 0 && tasksConclude.length === 0" class="box_nothing">Nenhum item na lista</p>
+      <p v-show="tasks.length === 0 && tasksConclude.length === 0" class="box_nothing">Nenhum item na lista</p>
 
     </section>
 
