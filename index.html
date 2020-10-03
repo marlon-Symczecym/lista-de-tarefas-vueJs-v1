@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./vue.js"></script>
-    <link rel="stylesheet" href="./style.css" />
-    <title>Lista de Tarefas</title>
-  </head>
-  <body>
-    <div id="app">{{ m }}</div>
-    <script src="./app.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./vue.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <title>Lista de Tarefas</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="app_title">Lista de Afazeres</h1>
+    <div class="inputs_container">
+      <div class="input_add_container">
+        <input v-model="describe" class="input_add" type="text" />
+        <button @click="addTask" class="input_add_btn">Salvar</button>
+      </div>
+      <div class="input_options">
+        <select v-model="option" name="options">
+          <option value="" disabled selected>Escolha uma</option>
+          <option value="warning">Não urgente</option>
+          <option value="urgent">Urgente</option>
+        </select>
+      </div>
+    </div>
+
+    <section class="box_container">
+      <h2 v-if="tasks.length > 0" class="tasks_title">À Fazer</h2>
+      <div v-if="tasks.length > 0" v-for="(item, index) in tasks" key="item.task" class="box">
+        <div class="box_tarja" :class="[item.option]"></div>
+        <p class="box_describe">{{item.task}}</p>
+        <div class="box_buttons">
+          <button @click="conclude(index)" class="box_btn btn_conclude">Concluir</button>
+          <img class="box_options" src="./assets/options.svg" alt="options">
+        </div>
+      </div>
+
+      <p v-if="tasks.length === 0 && tasksConclude.length === 0" class="box_nothing">Nenhum item na lista</p>
+
+      <h2 v-if="tasksConclude.length > 0" class="tasks_title">Concluídas</h2>
+      <div v-for="(item, index) in tasksConclude" key="item.task" class="box">
+        <div class="box_tarja" :class="[item.option]"></div>
+        <p class="box_describe">{{item.task}}</p>
+        <div class="box_buttons">
+          <button @click="deleteTask(index)" class="box_btn btn_delete">Deletar</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <script src="./app.js"></script>
+</body>
+
 </html>

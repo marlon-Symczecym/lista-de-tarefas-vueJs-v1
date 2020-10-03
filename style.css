@@ -1,5 +1,5 @@
 :root {
-  --background: #e5e5e5;
+  --background: #f1faee;
   --yeloow: #f0c24a;
   --green: #4cc76e;
   --red: #e63946;
@@ -14,8 +14,151 @@
   list-style-type: none;
   outline: none;
   text-decoration: none;
+  font-family: "Poppins";
 }
 
 html {
   font-size: 0.675rem;
+  background: var(--background);
+}
+
+#app {
+  max-width: 1210px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.app_title {
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  margin: 5rem 0;
+}
+
+/* INPUTS */
+.inputs_container {
+  width: 114rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input_add {
+  border: 2px solid var(--blue-primary);
+  border-radius: 0.3rem;
+  width: 50rem;
+  height: 4.6rem;
+  padding-left: 2rem;
+  background: var(--background);
+}
+
+.input_add_btn {
+  width: 10rem;
+  height: 5rem;
+  border: 1px solid var(--blue-primary);
+  border-radius: 0.3rem;
+  background: var(--blue-primary);
+  color: var(--background);
+  margin-left: -8px;
+  cursor: pointer;
+}
+
+select {
+  width: 30rem;
+  height: 5rem;
+  text-align: center;
+  color: var(--blue-dark);
+}
+
+/* BOX */
+.tasks_title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 2rem 0;
+}
+.box_container {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.box {
+  width: 100%;
+  height: 8rem;
+  background: var(--blue-secundary);
+  padding: 0 2rem 0 0;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box_tarja {
+  width: 3rem;
+  height: 100%;
+  background: var(--green);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  box-shadow: 2px 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.warning {
+  background: var(--yeloow);
+}
+
+.urgent {
+  background: var(--red);
+}
+
+.conclude {
+  background: var(--green);
+}
+
+.box_describe {
+  width: 100%;
+  font-size: 1.5rem;
+  color: var(--blue-primary);
+  text-align: left;
+  padding-left: 3rem;
+}
+
+.box_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.box_btn {
+  width: 12rem;
+  height: 5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
+  margin-right: 3rem;
+  cursor: pointer;
+}
+
+.btn_conclude {
+  background: var(--green);
+}
+
+.btn_delete {
+  background: var(--red);
+}
+
+.box_options {
+  width: 4rem;
+  cursor: pointer;
+}
+
+.box_nothing {
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: var(--blue-primary);
+  text-align: center;
 }
